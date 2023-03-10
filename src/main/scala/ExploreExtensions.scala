@@ -6,7 +6,7 @@ object ExploreExtensions {
       str.replaceAll("([A-Z])", "_" + "$1").toLowerCase
     }
   }
-  extension[T](list: List[T]) {
-    def getSecond: Option[T] = if(list.isEmpty) None else list.tail.headOption
+  extension [T](list: List[T]) {
+    def getSecond: Option[T] = if (list.isEmpty) None else list.tail.headOption
   }
 }
