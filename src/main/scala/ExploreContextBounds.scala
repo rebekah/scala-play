@@ -16,11 +16,19 @@ object ExploreContextBounds {
   // With this setup I get the error: Found(ord: org.rwaterbury.scaladev.Ord[A]) Required ((A,A) => A)
   // def maximumVerboseScala2[A](xs: List[A])(implicit ord: Ord[A]): A =
   //   xs.reduceLeft(max(ord))
+  
+  //resolution
+  def maximumVerboseScala2[A](xs: List[A])(implicit ord: Ord[A]): A =
+    xs.reduceLeft(max(_,_)(ord))
 
   // Scala 3 verbose example
   // With this setup I get the error: Missing arguments for method max in object ExploreContextBounds
   //def maximumVerboseScala3[A](xs: List[A])(using ord: Ord[A]): A =
   //  xs.reduceLeft(max(using ord))
+  
+  //resolution
+  def maximumVerboseScala3[A](xs: List[A])(using ord: Ord[A]): A =
+    xs.reduceLeft(max(_, _)(using ord))
 
   // Scala2 and Scala3 context bound example
   def maximumContextBound[A: Ord](xs: List[A]): A =
