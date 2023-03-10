@@ -6,7 +6,7 @@ object ExploreContextBounds {
 
   implicit val intOrd: Ord[Int] = new Ord[Int] {
     def max(x: Int, y: Int) =
-      if ((x > y) || x == y) x else y
+      if (x > y || x == y) x else y
   }
 
   def max[A](x: A, y: A)(implicit ord: Ord[A]) =
