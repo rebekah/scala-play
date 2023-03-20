@@ -6,5 +6,8 @@ lazy val root = (project in file("."))
   .settings(
     name := "scala-3-play",
     idePackagePrefix := Some("org.rwaterbury.scaladev"),
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.15" % "test"
+    libraryDependencies ++= Seq(
+      "org.scalatest" %% "scalatest" % "3.2.15" % "test",
+      "com.github.nscala-time" %% "nscala-time" % "2.32.0"
+    )
   )
