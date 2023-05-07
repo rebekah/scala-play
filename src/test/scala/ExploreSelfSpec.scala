@@ -25,17 +25,15 @@ class ExploreThisSpec extends FreeSpecStyle{
     def mySelfVal: String = "foo"
   }.insideInstance
 
-  "when the *this* is not aliased" - {
-    "and it's on it's own" - {
-      "it will reference the *this* of the trait instance" in {
-        insideInstance.mySelfVal shouldBe "traitVal"
-      }
+  "when the *this* is referenced not the alias *self*" - {
+    "it will reference the *this* of the trait instance" in {
+      insideInstance.myThisVal shouldBe "overrideVal"
     }
+  }
 
-    "and the self is not looking at the instance with it's overides" - {
-      "it will reference the this of the trait" in {
-        insideInstance.myThisVal shouldBe "overrideVal"
-      }
+  "and when alias *self* is referenced" - {
+    "it will reference the *this* of the trait definition" in {
+      insideInstance.mySelfVal shouldBe "traitVal"
     }
   }
 }
