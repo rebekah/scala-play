@@ -33,10 +33,15 @@ class ExploreTypeClassVariantsSpec extends FreeSpecStyle {
       }
     }
     "and the type is Shirt" - {
-      "and there is an instance for type Shirt" - {
+      "and there is an instance for the supertype Clothing" - {
         "it will find the an implicit instance for Shirt" in {
           testContravariant[Shirt] shouldBe "inside foldableShirt"
         }
+      }
+    }
+    "and the type is Clothing" - {
+      "it will find the an implicit instance for Clothing" in {
+        testContravariant[Clothing] shouldBe "inside foldableClothing"
       }
     }
   }
@@ -60,5 +65,17 @@ class ExploreTypeClassVariantsSpec extends FreeSpecStyle {
         testCovariant[TankTop] shouldBe "in returnableTankTop"
       }
     }
+    "and when the type is Clothing" - {
+      "and there is another type class at the same level of specificity as TankTop" - {
+        "that's defined locally" - {
+          implicit val returnableBlouse: ReturnMeCovariant[Blouse] = new ReturnMeCovariant[Blouse]:
+            override def childType = None
+            override def whereAmI = "in returnableBlouse"
+
+          "it will pick up the instance for Blouse" in {
+            testCovariant[Clothing] shouldBe "in returnableBlouse"
+          }
+        }
+
   }
 }
