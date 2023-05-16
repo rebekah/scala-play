@@ -76,6 +76,7 @@ class ExploreTypeClassVariantsSpec extends FreeSpecStyle {
             testCovariant[Clothing] shouldBe "in returnableBlouse"
           }
         }
-
+      }
+    }
   }
 }
