@@ -9,17 +9,17 @@ class FauxFirJacket extends Jacket {
 }
 
 object PlayingWithMethodSubstitution {
-  def aMethodWithTheExpectedTypes(fauxFirJacket: FauxFirJacket): AnyRef = {
-    fauxFirJacket.specificWashingInstructions
-  }
+  def aMethodWithTheExpectedTypes(
+    fauxFirJacket: FauxFirJacket
+  ): AnyRef = fauxFirJacket.specificWashingInstructions
 
-  def aMethodWithOtherTypes(jacket: Jacket): String = {
+  def aMethodWithOtherTypes(jacket: Jacket): String =
     jacket.genericWashingInstructions
-  }
 
-  def takesAMethod(fauxFirJacket: FauxFirJacket, substitutable: FauxFirJacket => AnyRef) = {
-    substitutable(fauxFirJacket)
-  }
+  def takesAMethod(
+    fauxFirJacket: FauxFirJacket,
+    substitutable: FauxFirJacket => AnyRef
+  ) = substitutable(fauxFirJacket)
 }
 
 class MethodVarianceSubstitutionSpec extends FreeSpecStyle {
@@ -34,6 +34,7 @@ class MethodVarianceSubstitutionSpec extends FreeSpecStyle {
       }
     }
   }
+
   "running with a method defined to take a supertype of the parameter type" - {
     "and return a subtype of expected the return type" - {
       "will work" in {
