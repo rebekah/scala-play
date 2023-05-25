@@ -36,7 +36,7 @@ class MethodVarianceSubstitutionSpec extends FreeSpecStyle {
   }
 
   "running with a method defined to take a supertype of the parameter type" - {
-    "and return a subtype of expected the return type" - {
+    "and return a subtype of the expected return type" - {
       "will work" in {
         PlayingWithMethodSubstitution.takesAMethod(
           fauxFirJacket,
