@@ -1,4 +1,3 @@
-# scala-3-play
 A space for exploring Scala.
 
 This repo contains code examples for various Scala features.
